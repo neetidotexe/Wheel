@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var enterProgress : EditText
     private lateinit var animateButton : Button
+    private lateinit var circularProgressBar : CircularProgressBar
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,12 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         enterProgress = findViewById(R.id.text_progress)
         animateButton = findViewById(R.id.button_animate)
+        circularProgressBar = findViewById(R.id.circular_progress_bar)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         animateButton.setOnClickListener {
             val progressString = enterProgress.text.toString()
             viewModel.onClickSubmit(progressString)
         }
+
+        viewModel.progressValue.observe(this, Observer {
+            circularProgressBar.setCircularProgressBar(it)
+        })
 
         viewModel.errorType.observe(this, Observer {
             when(it){
