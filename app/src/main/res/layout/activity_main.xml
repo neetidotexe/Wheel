@@ -41,5 +41,14 @@
         android:focusable="true"
         android:focusableInTouchMode="false" />
 
+    <com.example.myapplication.CircularProgressBar
+        android:id="@+id/circular_progress_bar"
+        android:layout_width="@dimen/spacing_250"
+        android:layout_height="@dimen/spacing_250"
+        android:layout_marginTop="@dimen/spacing_32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_progress"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
